@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Đăng nhập hoặc đăng ký tài khoản BookHub của bạn.">
+    <title>Authentication Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/authentication.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <form id="loginForm" class="form end">
+                    <p class="welcome-describe">Login to your account</p>
+                    <div class="input-group">
+                        <label for="email_login">Email</label>
+                        <input type="text" placeholder="Email" id="email_login">
+                    </div>
+                    <div class="input-group">
+                        <label for="password_login">Password</label>
+                        <input type="password" placeholder="Password" id="password_login">
+                    </div>
+                    <button type="submit" id="loginBtn" class="filled-button">Login</button>
+                    <button type="button" id="switchToRegister" class="outline-button">Register</button>
+                </form>
+                <form id="registerForm" class="form">
+                    <p class="welcome-describe">Register to continue</p>
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" placeholder="Your name" id="name">
+                    </div>
+                    <div class="input-group">
+                        <label for="email_register">Email</label>
+                        <input type="text" placeholder="Email" id="email_register">
+                    </div>
+                    <div class="input-group">
+                        <label for="password_register">Password</label>
+                        <input type="password" placeholder="Password" id="password_register">
+                    </div>
+                    <button type="submit" id="registerBtn" class="filled-button">Register</button>
+                    <button type="button" id="switchToLogin" class="outline-button">Login</button>
+                </form>
+            </div>
+            <div id="overlay">
+                <h1 class="logo">BookHub</h1>
+                <div class="welcome-container">
+                    <p>Welcome to our book store</p>
+                    <p>Sign in or sign up to continue</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/authentication.js"></script>
+</body>
+</html>
