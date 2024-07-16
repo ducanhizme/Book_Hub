@@ -1,0 +1,423 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+main {
+    overflow: hidden;
+    margin-top:5rem;
+}
+
+a,
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    user-select: none;
+    background: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+/*ROOT*/
+:root {
+    --color-black: #382C2C;
+    --color-gray: #4D4C4C;
+    --color-purple: #937DC2;
+    --font-inter: 'Inter', sans-serif;
+    --spacing-xxs: 0.125rem;
+    --spacing-xs: 0.3125rem;
+    --spacing-s: 0.625rem;
+    --spacing-m: 1.25rem;
+    --spacing-l: 1.875rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 3.125rem;
+    --font-size-xs: 0.75rem;
+    --font-size-s: 0.875rem;
+    --font-size-m: 1rem;
+    --font-size-l: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-xxl: 1.5rem;
+    --line-height-xs: 1.125rem;
+    --line-height-s: 1.25rem;
+    --line-height-m: 1.5rem;
+    --line-height-l: 1.625rem;
+    --line-height-xl: 1.75rem;
+    --line-height-xxl: 2rem;
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    :root {
+        --font-size-xs: 0.7rem;
+        --font-size-s: 0.8rem;
+        --font-size-m: 0.9rem;
+        --font-size-l: 1rem;
+        --font-size-xl: 1.1rem;
+        --font-size-xxl: 1.3rem;
+        --spacing-xs: 0.25rem;
+        --spacing-s: 0.5rem;
+        --spacing-m: 1rem;
+        --spacing-l: 1.5rem;
+        --spacing-xl: 2rem;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    :root {
+        --font-size-xs: 0.725rem;
+        --font-size-s: 0.825rem;
+        --font-size-m: 0.925rem;
+        --font-size-l: 1.025rem;
+        --font-size-xl: 1.125rem;
+        --font-size-xxl: 1.35rem;
+        --spacing-xs: 0.275rem;
+        --spacing-s: 0.525rem;
+        --spacing-m: 1.05rem;
+        --spacing-l: 1.575rem;
+        --spacing-xl: 2.1rem;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    :root {
+        --font-size-xs: 0.75rem;
+        --font-size-s: 0.85rem;
+        --font-size-m: 0.95rem;
+        --font-size-l: 1.05rem;
+        --font-size-xl: 1.15rem;
+        --font-size-xxl: 1.4rem;
+        --spacing-xs: 0.3rem;
+        --spacing-s: 0.55rem;
+        --spacing-m: 1.1rem;
+        --spacing-l: 1.65rem;
+        --spacing-xl: 2.2rem;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    :root {
+        --font-size-xs: 0.775rem;
+        --font-size-s: 0.875rem;
+        --font-size-m: 1rem;
+        --font-size-l: 1.1rem;
+        --font-size-xl: 1.2rem;
+        --font-size-xxl: 1.45rem;
+        --spacing-xs: 0.325rem;
+        --spacing-s: 0.575rem;
+        --spacing-m: 1.15rem;
+        --spacing-l: 1.725rem;
+        --spacing-xl: 2.3rem;
+    }
+}
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
+    :root {
+        --font-size-xs: 0.8rem;
+        --font-size-s: 0.9rem;
+        --font-size-m: 1.05rem;
+        --font-size-l: 1.15rem;
+        --font-size-xl: 1.25rem;
+        --font-size-xxl: 1.5rem;
+        --spacing-xs: 0.35rem;
+        --spacing-s: 0.6rem;
+        --spacing-m: 1.2rem;
+        --spacing-l: 1.8rem;
+        --spacing-xl: 2.4rem;
+    }
+}
+
+/*COMPONENT*/
+.padding-inline-l{
+    padding-inline: 6rem;
+}
+/*HEADER*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    transition: all 0.35s ease;
+    background: #937DC2;
+    color:white;
+}
+
+    .header.on-scroll nav{
+        background: white;
+        border-bottom: 2px solid #937DC2;
+    }
+
+    .header.on-scroll a {
+        color: #937DC2
+    }
+
+    .header.on-scroll .menu-block {
+        color: white;
+        background: #937DC2;
+    }
+
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 1.25rem;
+    width: 100%;
+    height: 4.25rem;
+    margin: 0 auto;
+    padding-inline: 2rem;
+}
+/*LOGO*/
+.brand {
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -1px;
+    color: white;
+    text-transform: uppercase;
+}
+/*MENU*/
+.menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 4rem 0 3rem;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.menu.is-active {
+    top: 0;
+    width: 100%;
+    height: auto;
+    background:var(--color-purple);
+}
+
+.menu-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1.25rem;
+}
+
+.menu-link {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: white;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.menu-block {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    user-select: none;
+    white-space: nowrap;
+    text-align: center;
+    margin-left: auto;
+    padding: 0.65rem 1.5rem;
+    border-radius: 3rem;
+    text-transform: capitalize;
+    color: #937DC2;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),;
+    transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (min-width: 48rem) {
+    .menu {
+        position: relative;
+        top: 0;
+        width: auto;
+        height: auto;
+        padding: 0rem;
+        margin-left: auto;
+        background: none;
+        box-shadow: none;
+    }
+
+    .menu-inner {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2rem;
+        margin: 0 auto;
+    }
+
+    .menu-link {
+        text-transform: capitalize;
+    }
+
+    .menu-block {
+        margin-left: 2rem;
+    }
+}
+/*TOGGLE-BUTTON*/
+.burger {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    order: -1;
+    z-index: 10;
+    width: 1.6rem;
+    height: 1.15rem;
+    border: none;
+    outline: none;
+    background: none;
+    visibility: visible;
+    transform: rotate(0deg);
+    transition: 0.35s ease;
+}
+
+@media only screen and (min-width: 48rem) {
+    .burger {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+.burger-line {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border: none;
+    outline: none;
+    opacity: 1;
+    border-radius: 1rem;
+    transform: rotate(0deg);
+    background-color: white;
+    transition: 0.25s ease-in-out;
+}
+
+.burger.is-active .burger-line:nth-child(1) {
+    top: 0.5rem;
+    transform: rotate(135deg);
+}
+
+.burger.is-active .burger-line:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.burger.is-active .burger-line:nth-child(3) {
+    top: 0.5rem;
+    transform: rotate(-135deg);
+}
+
+/* The SIMPLE-TOAST - position it at the bottom and in the middle of the screen */
+#simpleToast {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: MediumVioletRed; /* Background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    font-family: monospace;
+    display: inline-flex;
+    line-height: 12px
+}
+
+    #simpleToast span {
+        margin-left: 12px;
+        margin-top: 2px;
+    }
+
+    /* Show the SIMPLE-TOAST when clicking on a button (class added with JavaScript) */
+    #simpleToast.show {
+        visibility: visible; /* Show the SIMPLE-TOAST */
+        /* Add animation: Take 0.5 seconds to fade in and out the SIMPLE-TOAST.
+  However, delay the fade out process for 2.5 seconds */
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+/* Animations to fade the SIMPLE-TOAST in and out */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

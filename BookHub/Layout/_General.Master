@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_General.Master.cs" Inherits="BookHub.Layout._General" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="../css/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+</asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <header class="header inline-padding-2" id="header">
+        <nav class="navbar">
+            <a href="#" class="brand">Book Hub</a>
+            <div class="burger" id="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <div class="menu" id="menu">
+                <ul class="menu-inner">
+                    <li class="menu-item"><a href="#" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Feature</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Product</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Support</a></li>
+                </ul>
+            </div>
+            <a href="~/Login.aspx" class="menu-block" runat="server" id="authentication">Login</a>
+        </nav>
+    </header>
+    <main>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <div id="simpleToast" runat="server">
+        </div>
+    </main>
+    <asp:ContentPlaceHolder ID="Scripts" runat="server"></asp:ContentPlaceHolder>
+    <script src="../js/script.js"></script>
+</body>
+</html>

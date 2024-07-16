@@ -24,5 +24,6 @@ namespace BookHub.data.Models
         public virtual ICollection<BookCategory> BookCategories { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+
     }
 }

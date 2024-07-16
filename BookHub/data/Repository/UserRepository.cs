@@ -27,19 +27,21 @@ namespace BookHub.data.Repository
                 {
                     return false;
                 }
-
-                string hashedPassword = ComputeHash(password);
-                var newUser = new User
+                else
                 {
-                    Email = email,
-                    Password = hashedPassword,
-                    Username = name,
-                    CreatedAt = DateTime.Now,
-                    Role = "User"
-                };
-                context.Users.Add(newUser);
-                context.SaveChanges();
-                return true;
+                    string hashedPassword = ComputeHash(password);
+                        var newUser = new User
+                        {
+                            Email = email,
+                            Password = hashedPassword,
+                            Username = name,
+                            CreatedAt = DateTime.Now,
+                            Role = "User"
+                        };
+                        context.Users.Add(newUser);
+                        context.SaveChanges();
+                        return true;
+                }
             }
         }
 

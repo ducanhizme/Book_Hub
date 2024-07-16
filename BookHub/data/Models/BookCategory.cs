@@ -12,8 +12,6 @@ namespace BookHub.data.Models
         public int BookCategoryId { get; set; }
         public int BookId { get; set; }
         public int CategoryId { get; set; }
-
-        // Navigation properties
         public virtual Book Book { get; set; }
         public virtual Category Category { get; set; }
     }

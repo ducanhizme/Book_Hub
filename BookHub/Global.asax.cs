@@ -17,7 +17,7 @@ namespace BookHub
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session.Timeout = 86400;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
