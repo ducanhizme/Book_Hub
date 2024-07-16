@@ -1,4 +1,10 @@
-﻿main {
+﻿input, input:active, input:focus, input:focus-visible {
+    border: none;
+        outline: none;
+
+}
+
+main {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl)
@@ -182,7 +188,7 @@
 
     .product-container h2 {
         color: var(--color-black);
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-xxl);
         font-style: normal;
         font-weight: 600;
         line-height: var(--line-height-l);
@@ -266,7 +272,7 @@
 
 .subscribe {
     margin-inline: auto;
-    width: 100%;
+    max-width: 575.98px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,35 +285,77 @@
     line-height: var(--line-height-l);
 }
 
-
-.genre-container h2 {
-    color: var(--color-black);
-    font-size: var(--font-size-xl);
-    font-style: normal;
-    font-weight: 600;
-    line-height: var(--line-height-l);
+.input-subscribe{
+    width:100%;
 }
 
-.genre-btn-group {
+.input-subscribe-group {
     display: flex;
-    flex-direction: column;
-    gap: 10px
+    width:100%;
+    justify-content:space-between;
 }
 
-.genre-btn {
-    max-width: 200px;
+
+
+
+.input-subscribe-group button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-l);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
     color: var(--color-purple);
-    height: 3rem;
-    text-align: start;
-    transition:all ease ;
-    padding: 0.5rem 1rem;
 }
 
-    .genre-btn.active {
-        border-right: 3px solid var(--color-purple);
-        border-bottom: 3px solid var(--color-purple);
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+.svg-icon {
+    width: 2em;
+    height: 2em;
+}
+
+    .svg-icon path,
+    .svg-icon polygon,
+    .svg-icon rect {
+        fill: var(--color-purple);
     }
 
+    .svg-icon circle {
+        stroke: var(--color-purple);
+        stroke-width: 1;
+    }
+@media(max-width: 575.98px) {
+    .input-subscribe-group {
+        flex-direction: column;
+        gap: var(--spacing-m);
+    }
+
+    .subscribe{
+        display: flex;
+        flex-direction:column;
+        width:100%
+    }
+
+    .input-subscribe{
+        gap: var(--spacing-m);
+    }
+
+    .input-subscribe-group button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--font-size-l);
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        color: var(--color-purple);
+        width: 100%;
+        border: 1px solid var(--color-purple)
+    }
+    .input-subscribe-group input{
+        font-size:var(--font-size-l);
+    }
+
+}
     
 

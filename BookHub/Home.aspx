@@ -57,17 +57,25 @@
         </div>
     </div>
 </div>
-    <div class="genre-container padding-inline-l" id="genre_container">
-        <h2 >Category</h2>
-        <div class="genre-btn-group" runat="server" id="category_container"></div>
-        <div id="genreBooks" class="product-list swiper-wrapper" runat="server"></div>
+    <div id="catgory_section" runat="server">
+        <div class="product-container padding-inline-l">
+            <h2>New releases</h2>
+            <div class="slider-wrapper swiper">
+                <div id="Div1" class="product-list swiper-wrapper" runat="server">
+        </div>
+    </div>
+</div>
     </div>
 <div class="subscribe">
+    <h2>Subscribe to our newsletter</h2>
     <div class="input-subscribe">
-        <h2>Subscribe to our newsletter</h2>
-        <p>Get the latest news and updates from our store</p>
-        <input type="email" placeholder="Enter your email">
-        <button class="filled-button">Subscribe</button>
+        <p>Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur. Elit adipiscing enim pharetra hac.</p>
+        <div class="input-subscribe-group">
+            <input type="email" placeholder="Enter your email" />
+            <button>Send <svg class="svg-icon" viewBox="0 0 20 20">
+				<path d="M17.218,2.268L2.477,8.388C2.13,8.535,2.164,9.05,2.542,9.134L9.33,10.67l1.535,6.787c0.083,0.377,0.602,0.415,0.745,0.065l6.123-14.74C17.866,2.46,17.539,2.134,17.218,2.268 M3.92,8.641l11.772-4.89L9.535,9.909L3.92,8.641z M11.358,16.078l-1.268-5.613l6.157-6.157L11.358,16.078z"></path>
+			</svg></button>
+        </div>
     </div>
 </div>
 </asp:Content>

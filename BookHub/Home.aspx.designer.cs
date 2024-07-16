@@ -24,21 +24,21 @@ namespace BookHub
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl bookContainer;
 
         /// <summary>
-        /// category_container control.
+        /// catgory_section control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl category_container;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl catgory_section;
 
         /// <summary>
-        /// genreBooks control.
+        /// Div1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl genreBooks;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
     }
 }

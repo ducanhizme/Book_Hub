@@ -38,6 +38,38 @@
         <div id="simpleToast" runat="server">
         </div>
     </main>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="/" class="brand">BookHub</a>
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter">Twitter</a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">Linkedin</a>
+            </div>
+            <div class="footer-about">
+                <p>BookHub is your one-stop destination for exploring and discovering books across genres. Dive into the world of reading with us.</p>
+            </div>
+        </div>
+        <div class="footer-copy">
+            <p>© 2024 BookHub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
     <asp:ContentPlaceHolder ID="Scripts" runat="server"></asp:ContentPlaceHolder>
     <script src="../js/script.js"></script>
 </body>
