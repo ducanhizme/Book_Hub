@@ -13,27 +13,27 @@ namespace BookHub
 {
     public partial class Register : System.Web.UI.Page
     {
-        private UserRepository userRepository;
-        private String username;
-        private String password;
-        private String email;
-        private String confirmPassword;
-        public const String AUTHENTICATION_ERROR = "AuthenticationError";
+        private UserRepository _userRepository;
+        private String _username;
+        private String _password;
+        private String _email;
+        private String _confirmPassword;
+        public const String AuthenticationError = "AuthenticationError";
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        userRepository = new UserRepository();
+        _userRepository = new UserRepository();
             if (IsPostBack)
             {
-                username = Request.Form["user_name"];
-                email = Request.Form["email"];
-                password = Request.Form["password"];
-                confirmPassword = Request.Form["confirm_password"];
-                if (UserRegister(username,password,confirmPassword,email))
+                _username = Request.Form["user_name"];
+                _email = Request.Form["email"];
+                _password = Request.Form["password"];
+                _confirmPassword = Request.Form["confirm_password"];
+                if (UserRegister(_username,_password,_confirmPassword,_email))
                 {
-                    if (IsValidEmail(email) && IsValidPassword(password, confirmPassword))
+                    if (IsValidEmail(_email) && IsValidPassword(_password, _confirmPassword))
                     {
-                        if (!userRepository.RegisterUser(email, password, username))
+                        if (!_userRepository.RegisterUser(_email, _password, _username))
                         {
                             Session[Constants.Error] = "Email already exists";
                             Response.Redirect("Register.aspx");
@@ -84,7 +84,7 @@ namespace BookHub
             }
             if (!password.Any(char.IsLower))
             {
-                Session[AUTHENTICATION_ERROR] = "Password must contain at least one lowercase letter";
+                Session[AuthenticationError] = "Password must contain at least one lowercase letter";
                 return false;
             }
 
@@ -93,7 +93,7 @@ namespace BookHub
                 Session[Constants.Error] = "Password must contain at least one digit";
                 return false;
             }
-            if (!password.Any(c => !char.IsLetterOrDigit(c)))
+            if (password.All(char.IsLetterOrDigit))
             {
                 Session[Constants.Error] = "Password must contain at least one special character";
                 return false;

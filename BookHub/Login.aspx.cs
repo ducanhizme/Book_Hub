@@ -11,21 +11,21 @@ namespace BookHub
 {
     public partial class Login : System.Web.UI.Page
     {
-        private UserRepository userRepository;
+        private UserRepository _userRepository;
         protected void Page_Load(object sender, EventArgs e)
         {
-            userRepository= new UserRepository();
+            _userRepository= new UserRepository();
             if (IsPostBack)
             {
                 string email = Request.Form.Get("email");
                 string password = Request.Form.Get("password");
-                bool isAuthenticated = userRepository.AuthenticateUser(email, password);
+                bool isAuthenticated = _userRepository.AuthenticateUser(email, password);
 
                 if (isAuthenticated)
                 {
                     
                     Session[Constants.Success] = "Login success. Welcome to BookHub";
-                    var userAuthenticated = userRepository.FindUserByEmail(email);
+                    var userAuthenticated = _userRepository.FindUserByEmail(email);
                     Session[Constants.Authenticated] = userAuthenticated.UserId;
                     if (userAuthenticated.Role == "Admin")
                     {

@@ -2,42 +2,34 @@
 using BookHub.data.Repository;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace BookHub
 {
     public partial class Home : System.Web.UI.Page
     {
-        private BooksRepository booksRepository;
-        private CategoryRepository categoryRepository;
+        private BooksRepository _booksRepository;
+        private CategoryRepository _categoryRepository;
         protected void Page_Load(object sender, EventArgs e)
         {
-            booksRepository = new BooksRepository();
-            categoryRepository = new CategoryRepository();
+            _booksRepository = new BooksRepository();
+            _categoryRepository = new CategoryRepository();
             if (!IsPostBack)
             {
                 BindBooks();
                 BindCategory();
             }
-            string category = Request.QueryString["category"];
             
         }
 
         private void BindBooks()
         {
-            List<Book> books = booksRepository.GetAllBooks();
+            List<Book> books = _booksRepository.GetAllBooks();
             foreach (Book book in books)
             {
-
-
                 string html = $@"
-                        <a class='product-item swiper-slide' href='BookDetail.aspx?id={book.BookId}'>
-                            <img src='{book.image}' alt=''>
+                        <a class='product-item swiper-slide' href='BookDetails.aspx?id={book.BookId}'>
+                            <img src='{book.Image}' alt=''>
                             <h4>{book.BookName}</h4>
                             <p>{book.Author}</p>
                             <div class='fav-price-container'>
@@ -59,22 +51,22 @@ namespace BookHub
         {
             String wrapper = "";
             String innerProduct = "";
-            int MAX_CATEGORY_DISPLAY = 3;
-            List<Category> categories = categoryRepository.GetAllCategories();
+            int maxCategoryDisplay = 3;
+            List<Category> categories = _categoryRepository.GetAllCategories();
             Dictionary<int, List<Book>> bookCategory = new Dictionary<int, List<Book>>();
             foreach (Category category in categories)
             {
-                List<Book> books = booksRepository.GetBooksByCategory(category.CategoryId);
+                List<Book> books = _booksRepository.GetBooksByCategoryId(category.CategoryId);
                 bookCategory.Add(category.CategoryId, books);
             }
-            for (int i = 0; i < Math.Min(categories.Count, MAX_CATEGORY_DISPLAY); i++)
+            for (int i = 0; i < Math.Min(categories.Count, maxCategoryDisplay); i++)
             {
                 
                 foreach(Book book in bookCategory[categories[i].CategoryId])
                 {
                     innerProduct+= $@"
                         <a class='product-item swiper-slide' href='BookDetail.aspx?id={book.BookId}'>
-                            <img src='{book.image}' alt=''>
+                            <img src='{book.Image}' alt=''>
                             <h4>{book.BookName}</h4>
                             <p>{book.Author}</p>
                             <div class='fav-price-container'>

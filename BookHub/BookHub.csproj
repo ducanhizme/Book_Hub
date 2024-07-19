@@ -150,14 +150,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="authentication.aspx" />
-    <Content Include="BookDetail.aspx" />
+    <Content Include="BookDetails.aspx" />
     <Content Include="css\authentication.css" />
+    <Content Include="css\detail.css" />
     <Content Include="css\home.css" />
     <Content Include="css\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
-    <Content Include="html\authentication.html" />
     <Content Include="js\authentication.js" />
     <Content Include="js\home.js" />
     <Content Include="js\script.js" />
@@ -167,19 +166,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="authentication.aspx.cs">
-      <DependentUpon>authentication.aspx</DependentUpon>
+    <Compile Include="BookDetails.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>BookDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="authentication.aspx.designer.cs">
-      <DependentUpon>authentication.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BookDetail.aspx.cs">
-      <DependentUpon>BookDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BookDetail.aspx.designer.cs">
-      <DependentUpon>BookDetail.aspx</DependentUpon>
+    <Compile Include="BookDetails.aspx.designer.cs">
+      <DependentUpon>BookDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="data\AppContext.cs" />
     <Compile Include="data\Models\Book.cs" />

@@ -19,11 +19,16 @@ namespace BookHub.data.Models
         public int ReadingAge { get; set; }
         public int PrintLength { get; set; }
         public string Dimensions { get; set; }
-        public string image{ get; set; }
+        public string Image{ get; set; }
         public virtual Publisher Publisher { get; set; }
         public virtual ICollection<BookCategory> BookCategories { get; set; }
         public virtual ICollection<CartItem> CartItems { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+
+        public String DateToString()
+        {
+            return PublicationDate.ToString("MMMM d, yyyy");
+        }
 
     }
 }

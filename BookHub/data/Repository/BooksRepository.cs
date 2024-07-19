@@ -20,14 +20,14 @@ namespace BookHub.data.Repository
 
        
        
-        public Book GetBookByID(int id)
+        public Book GetBookById(int id)
         {
             using (var context = new AppContext()) {
-                return context.Set<Book>().FirstOrDefault(book => book.BookId == id);
+                return context.Books.Include("Publisher").Include("BookCategories").FirstOrDefault(book => book.BookId == id);
             }
         }
 
-        public List<Book> GetBooksByCategory(int categoryId)
+        public List<Book> GetBooksByCategoryId(int categoryId)
         {
             using (var context = new AppContext())
             {
@@ -36,6 +36,17 @@ namespace BookHub.data.Repository
                                 .Where(result => result.BookCategory.CategoryId == categoryId)
                                 .Select(result => result.Book)
                                 .ToList();
+            }
+        }
+        
+        public  List<Book> GetBooksByCategoryIds(List<int> categoryIds)
+        {
+            using (var context = new AppContext())
+            {
+                return context.Books
+                    .Where(book => book.BookCategories.Any(bc => categoryIds.Contains(bc.CategoryId)))
+                    .Distinct()
+                    .ToList();
             }
         }
         public Book GetBookByName(string name)
