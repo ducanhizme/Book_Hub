@@ -57,6 +57,11 @@ namespace BookHub.data.Repository
             }
         }
 
+        public void AddBookToCart()
+        {
+            
+        }
+
 
     }
 }

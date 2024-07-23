@@ -150,14 +150,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddToCart.aspx" />
     <Content Include="BookDetails.aspx" />
+    <Content Include="CartProduct.aspx" />
+    <Content Include="Checkout.aspx" />
     <Content Include="css\authentication.css" />
+    <Content Include="css\cart.css" />
     <Content Include="css\detail.css" />
     <Content Include="css\home.css" />
     <Content Include="css\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="js\authentication.js" />
+    <Content Include="js\detail.js" />
     <Content Include="js\home.js" />
     <Content Include="js\script.js" />
     <Content Include="Login.aspx" />
@@ -166,12 +171,33 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddToCart.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AddToCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddToCart.aspx.designer.cs">
+      <DependentUpon>AddToCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BookDetails.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>BookDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookDetails.aspx.designer.cs">
       <DependentUpon>BookDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CartProduct.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>CartProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CartProduct.aspx.designer.cs">
+      <DependentUpon>CartProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="data\AppContext.cs" />
     <Compile Include="data\Models\Book.cs" />
@@ -184,6 +210,7 @@
     <Compile Include="data\Models\Pulisher.cs" />
     <Compile Include="data\Models\User.cs" />
     <Compile Include="data\Repository\BooksRepository.cs" />
+    <Compile Include="data\Repository\CartRepository.cs" />
     <Compile Include="data\Repository\CategoryRepository.cs" />
     <Compile Include="data\Repository\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -220,6 +247,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ultis\Constants.cs" />
+    <Compile Include="Ultis\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\_General.Master" />

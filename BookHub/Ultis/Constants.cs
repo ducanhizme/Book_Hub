@@ -10,6 +10,7 @@ namespace BookHub.Ultis
     {
         public const String Error = "Error";
         public const String Success = "Success";
-        public const String Authenticated = "Authenticated";
+        public const String Authenticated = "Userid";
+        public const String Cart = "Cart";
     }
 }

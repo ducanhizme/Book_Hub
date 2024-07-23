@@ -40,6 +40,7 @@ namespace BookHub.Layout
             {
                 authentication.HRef = "Profile.aspx";
                 authentication.InnerText = "Profile";
+                Console.WriteLine("Layout: "+Session[Constants.Authenticated]);
             }
         }
     }

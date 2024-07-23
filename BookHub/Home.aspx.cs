@@ -2,6 +2,7 @@
 using BookHub.data.Repository;
 using System;
 using System.Collections.Generic;
+using BookHub.Ultis;
 
 
 namespace BookHub
@@ -16,7 +17,9 @@ namespace BookHub
             _categoryRepository = new CategoryRepository();
             if (!IsPostBack)
             {
+                var a = Session[Constants.Authenticated];
                 BindBooks();
+                var userId =Session[Constants.Authenticated] as string;
                 BindCategory();
             }
             
@@ -65,7 +68,7 @@ namespace BookHub
                 foreach(Book book in bookCategory[categories[i].CategoryId])
                 {
                     innerProduct+= $@"
-                        <a class='product-item swiper-slide' href='BookDetail.aspx?id={book.BookId}'>
+                        <a class='product-item swiper-slide' href='BookDetails.aspx?id={book.BookId}'>
                             <img src='{book.Image}' alt=''>
                             <h4>{book.BookName}</h4>
                             <p>{book.Author}</p>

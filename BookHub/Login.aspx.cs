@@ -27,6 +27,9 @@ namespace BookHub
                     Session[Constants.Success] = "Login success. Welcome to BookHub";
                     var userAuthenticated = _userRepository.FindUserByEmail(email);
                     Session[Constants.Authenticated] = userAuthenticated.UserId;
+                    
+                    Console.WriteLine("Login Page - Session Authenticated set: " + Session[Constants.Authenticated]);
+
                     if (userAuthenticated.Role == "Admin")
                     {
                        
@@ -34,10 +37,15 @@ namespace BookHub
                     }
                     else
                     {
-                        
-                        Response.Redirect("Home.aspx");
+                        if(Session[Constants.Cart] != null)
+                        {
+                            Response.Redirect($"AddToCart.aspx?id={Session[Constants.Cart]}");
+                        }
+                        else
+                        {
+                            Response.Redirect("Home.aspx");
+                        }
                     }
-                    
                 }
                 else
                 {

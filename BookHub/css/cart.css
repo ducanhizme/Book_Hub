@@ -1,0 +1,145 @@
+﻿.outline-button {
+    border: 1px solid #937DC2;
+    color: #937DC2;
+    background: transparent;
+}
+
+.filled-button {
+    color: white;
+    background: #937DC2;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.shopping-cart-container{
+    max-width: 70%;
+    margin: auto;
+    display: flex;
+    gap:20px;
+    
+}
+
+.cart-list{
+    width: 50%;
+}
+.cart-item{
+    display: flex;
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    gap: 10px;
+}
+
+.cart-item-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.cart-item-image{
+    max-width: 120px;
+    max-height: 210px;
+}
+
+.cart-item-describe{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-item-detail{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
+.quantity button {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.quantity input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #937DC2;
+    border-radius: 5px;
+}
+
+.cart-item-remove{
+    width: fit-content;
+    padding-inline:20px;
+}
+
+.checkout-box{
+    margin-top:12px ;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    border:1px solid var(--color-purple);
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.input-field {
+    position: relative;
+    border: 2px solid var(--color-purple);
+    border-radius:5px;
+    margin: 10px 0;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.15s ease;
+    color: var(--color-purple);
+    padding-left:10px;
+}
+
+.input-field input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--color-black);
+    padding-left:10px
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+    font-size: 0.8rem;
+    padding-left: 0px;
+    top: 10px;
+    transform: translateY(-160%);
+}
+
+.total-price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-price h4 , .total-price p{
+    color: var(--color-purple);
+}
