@@ -15,12 +15,15 @@ namespace BookHub
         protected void Page_Load(object sender, EventArgs e)
         {
             _userRepository= new UserRepository();
+            if(Session[Constants.Authenticated] != null)
+            {
+                Session.Remove(Constants.Authenticated);
+            }
             if (IsPostBack)
             {
                 string email = Request.Form.Get("email");
                 string password = Request.Form.Get("password");
                 bool isAuthenticated = _userRepository.AuthenticateUser(email, password);
-
                 if (isAuthenticated)
                 {
                     
@@ -39,7 +42,7 @@ namespace BookHub
                     {
                         if(Session[Constants.Cart] != null)
                         {
-                            Response.Redirect($"AddToCart.aspx?id={Session[Constants.Cart]}");
+                            Response.Redirect($"CartAction.aspx?id={Session[Constants.Cart]}&action=add");
                         }
                         else
                         {

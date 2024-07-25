@@ -5,7 +5,7 @@ using BookHub.Ultis;
 
 namespace BookHub
 {
-    public partial class CartProduct : Page
+    public partial class CartProduct : AuthorizationPage
     {
         private BooksRepository _booksRepository;
         private CartRepository _cartRepository;
@@ -15,7 +15,8 @@ namespace BookHub
         {
             _booksRepository = new BooksRepository();
             _cartRepository = new CartRepository();
-            _userId = Convert.ToInt32(Session[Constants.Authenticated]);
+            _userId = Convert.ToInt32(AuthenticatedUserId);
+            Console.WriteLine("In CartProduct");
             if (!IsPostBack)
             {
                 BindCart();
@@ -43,15 +44,15 @@ namespace BookHub
                         <div class=""cart-item-detail"">
                             <h4 class=""cart-item-title"">{book.BookName}</h4>
                             <p class=""cart-item-author"">{book.Author}</p>
-                            <div class=""quantity"">
-                                <button class=""outline-button"" type=""button"" id=""decrease"">-</button>
-                                <input type=""text"" value={cartItem.Quantity} name=""quantity"" id=""quantity"">
-                                <button class=""outline-button"" type=""button"" id=""increase"">+</button>
-                            </div>
+                            <form class=""quantity"" action=""CartAction.aspx?id={book.BookId}&action=update"" method=""post"">
+                                <button class=""outline-button"" type=""submit"" id=""decrease"">-</button>
+                                <input type=""text"" value={cartItem.Quantity} name=""quantity"" id=""quantity"" readonly>
+                                <button class=""outline-button"" type=""submit"" id=""increase"">+</button>
+                            </form>
                         </div>
                         <p class=""cart-item-price"">{book.Price * cartItem.Quantity}</p>
                     </div>
-                    <button class=""cart-item-remove outline-button"" type=""button"">Remove</button>
+                    <a href=""CartAction.aspx?id={book.BookId}&action=delete"" class=""cart-item-remove outline-button"" type=""button"">Remove</a>
                 </div>
             </div>";
                 cartList.InnerHtml += html;

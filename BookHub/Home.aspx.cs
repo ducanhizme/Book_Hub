@@ -17,9 +17,8 @@ namespace BookHub
             _categoryRepository = new CategoryRepository();
             if (!IsPostBack)
             {
-                var a = Session[Constants.Authenticated];
+                
                 BindBooks();
-                var userId =Session[Constants.Authenticated] as string;
                 BindCategory();
             }
             

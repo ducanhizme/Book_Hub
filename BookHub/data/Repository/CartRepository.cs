@@ -7,7 +7,6 @@ namespace BookHub.data.Repository
 {
     public class CartRepository
     {
-        
         public Cart GetCartByUserId(int userId)
         {
             using (var context = new AppContext())
@@ -15,7 +14,8 @@ namespace BookHub.data.Repository
                 return context.Carts.FirstOrDefault(c => c.UserId == userId);
             }
         }
-        public void AddToCart(int userId, int bookId, int quantity)
+
+        public void AddToCart(int userId, int bookId, int quantity, bool update)
         {
             using (var context = new AppContext())
             {
@@ -30,7 +30,14 @@ namespace BookHub.data.Repository
                 var cartItem = context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.BookId == bookId);
                 if (cartItem != null)
                 {
-                    cartItem.Quantity += quantity;
+                    if (update)
+                    {
+                        cartItem.Quantity = quantity;
+                    }
+                    else
+                    {
+                        cartItem.Quantity += quantity;
+                    }
                 }
                 else
                 {
@@ -42,6 +49,7 @@ namespace BookHub.data.Repository
                     };
                     context.CartItems.Add(cartItem);
                 }
+
                 context.SaveChanges();
             }
         }
@@ -56,10 +64,11 @@ namespace BookHub.data.Repository
                     var cartItems = context.CartItems.Where(ci => ci.CartId == cart.CartId).ToList();
                     return cartItems;
                 }
+
                 return new List<CartItem>();
             }
         }
-        
+
         public void RemoveAllCartItemsByCartId(int cartId)
         {
             using (var context = new AppContext())
@@ -69,7 +78,26 @@ namespace BookHub.data.Repository
                 {
                     context.CartItems.Remove(item);
                 }
+
                 context.SaveChanges();
+            }
+        }
+
+        public void RemoveCartItem(int userId, int bookId)
+        {
+            using (var context = new AppContext())
+            {
+                var cart = GetCartByUserId(userId);
+                if (cart != null)
+                {
+                    var cartItem =
+                        context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.BookId == bookId);
+                    if (cartItem != null)
+                    {
+                        context.CartItems.Remove(cartItem);
+                        context.SaveChanges();
+                    }
+                }
             }
         }
     }

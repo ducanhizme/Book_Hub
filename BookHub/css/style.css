@@ -19,11 +19,15 @@ body {
     font-size: clamp(1rem, 2vw, 1.125rem);
     font-weight: 400;
     line-height: 1.5;
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
 }
 
 main {
     overflow: hidden;
     margin-top:5rem;
+    flex-grow:1;
 }
 
 a,
@@ -37,6 +41,10 @@ button {
     text-decoration: none;
 }
 /*ROOT*/
+
+.padding-inline-l{
+    padding-inline: 6rem;
+}
 :root {
     --color-black: #382C2C;
     --color-gray: #4D4C4C;
@@ -110,6 +118,9 @@ button {
         --spacing-l: 1.65rem;
         --spacing-xl: 2.2rem;
     }
+    .padding-inline-l{
+        padding-inline: 5rem;
+    }
 }
 
 /* Small devices (landscape phones, less than 768px) */
@@ -126,6 +137,9 @@ button {
         --spacing-m: 1.05rem;
         --spacing-l: 1.575rem;
         --spacing-xl: 2.1rem;
+    }
+    .padding-inline-l{
+        padding-inline: 4rem;
     }
 }
 
@@ -144,6 +158,9 @@ button {
         --spacing-l: 1.5rem;
         --spacing-xl: 2rem;
     }
+    .padding-inline-l{
+        padding-inline: 1.2rem;
+    }
 }
 
 
@@ -156,9 +173,7 @@ button {
 
 
 /*COMPONENT*/
-.padding-inline-l{
-    padding-inline: 6rem;
-}
+
 /*HEADER*/
 .header {
     position: fixed;
@@ -181,6 +196,8 @@ button {
     .header.on-scroll a {
         color: #937DC2
     }
+    
+
 
     .header.on-scroll .menu-block {
         color: white;
@@ -226,6 +243,11 @@ button {
     width: 100%;
     height: auto;
     background:var(--color-purple);
+}
+
+.header.on-scroll .menu.is-active a{
+    color: white;
+    /*background: var(--color-purple);*/
 }
 
 .menu-inner {
@@ -287,6 +309,10 @@ button {
     .menu-link {
         text-transform: capitalize;
     }
+    
+    .menu-link a{
+        color: white;
+    }
 
     .menu-block {
         margin-left: 2rem;
@@ -294,8 +320,9 @@ button {
 }
 /*TOGGLE-BUTTON*/
 .burger {
-    position: relative;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     user-select: none;
     order: -1;
@@ -306,7 +333,6 @@ button {
     outline: none;
     background: none;
     visibility: visible;
-    transform: rotate(0deg);
     transition: 0.35s ease;
 }
 
@@ -332,20 +358,7 @@ button {
     transition: 0.25s ease-in-out;
 }
 
-.burger.is-active .burger-line:nth-child(1) {
-    top: 0.5rem;
-    transform: rotate(135deg);
-}
 
-.burger.is-active .burger-line:nth-child(2) {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.burger.is-active .burger-line:nth-child(3) {
-    top: 0.5rem;
-    transform: rotate(-135deg);
-}
 
 /* The SIMPLE-TOAST - position it at the bottom and in the middle of the screen */
 #simpleToast {
@@ -530,6 +543,10 @@ button {
 .swiper {
     width: 100%;
     padding-bottom: 10px;
+}
+
+.swiper-slide{
+    display: flex;
 }
 
 .product-item {

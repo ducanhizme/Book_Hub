@@ -150,7 +150,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddToCart.aspx" />
+    <Content Include="CartAction.aspx" />
     <Content Include="BookDetails.aspx" />
     <Content Include="CartProduct.aspx" />
     <Content Include="Checkout.aspx" />
@@ -162,21 +162,23 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="js\authentication.js" />
+    <Content Include="js\cart.js" />
     <Content Include="js\detail.js" />
     <Content Include="js\home.js" />
     <Content Include="js\script.js" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Resource\book_banner.png" />
+    <Content Include="Testt.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddToCart.aspx.cs">
+    <Compile Include="CartAction.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>AddToCart.aspx</DependentUpon>
+      <DependentUpon>CartAction.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddToCart.aspx.designer.cs">
-      <DependentUpon>AddToCart.aspx</DependentUpon>
+    <Compile Include="CartAction.aspx.designer.cs">
+      <DependentUpon>CartAction.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookDetails.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -246,6 +248,14 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Testt.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Testt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Testt.aspx.designer.cs">
+      <DependentUpon>Testt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ultis\AuthorizationPage.cs" />
     <Compile Include="Ultis\Constants.cs" />
     <Compile Include="Ultis\SessionManager.cs" />
   </ItemGroup>

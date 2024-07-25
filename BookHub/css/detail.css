@@ -58,9 +58,10 @@
     max-width: 1200px;
     column-gap: 4rem;
 }
-
 .detail-product-image{
     grid-area: img;
+}
+.detail-product-image img{
     width: 100%;
     max-width: 412px ;
     height: 100%;

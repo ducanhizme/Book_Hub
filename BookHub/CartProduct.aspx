@@ -24,3 +24,6 @@
 <asp:Content runat="server" ID="Head" ContentPlaceHolderID="Head">
     <link rel="stylesheet" href="css/cart.css">
 </asp:Content>
+<asp:Content runat="server" ID="CartScript" ContentPlaceHolderID="Scripts">
+    <script src="js/cart.js"></script>
+</asp:Content>

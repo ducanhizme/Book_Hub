@@ -1,11 +1,6 @@
 ﻿using BookHub.Ultis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace BookHub.Layout
 {
@@ -25,12 +20,10 @@ namespace BookHub.Layout
             {
                 string message = Session[sessionKey].ToString();
                 simpleToast.InnerHtml = $"<span>{message}</span>";
-                simpleToast.Attributes.Add("class", "show");
-                if (!string.IsNullOrEmpty(backgroundColor))
-                {
-                    simpleToast.Style.Add("background-color", backgroundColor);
-                }
                 Session.Remove(sessionKey);
+                simpleToast.Attributes.Add("class", "show");
+                simpleToast.Style.Add("background-color", backgroundColor);
+                
             }
         }
 
@@ -38,10 +31,12 @@ namespace BookHub.Layout
         {
             if (Session[Constants.Authenticated] != null)
             {
-                authentication.HRef = "Profile.aspx";
-                authentication.InnerText = "Profile";
+                authentication.InnerText = "Log Out";
                 Console.WriteLine("Layout: "+Session[Constants.Authenticated]);
             }
         }
+
+        
+      
     }
 }
