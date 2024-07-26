@@ -93,3 +93,64 @@ const swiper = new Swiper('.swiper', {
     }
 });
 
+// function filterTable() {
+//     const searchBar = document.getElementById('searchBar').value.toLowerCase();
+//     const entitySelect = document.getElementById('entitySelect').value;
+//     const categoryFilter = document.getElementById('categoryFilter').value;
+//     const tableBody = document.getElementById('bookTableBody');
+//     const rows = Array.from(tableBody.rows);
+//
+//     rows.forEach(row => {
+//         const bookName = row.cells[1].textContent.toLowerCase();
+//         const category = row.dataset.category; // Assuming category is stored in data-category attribute
+//         const entity = row.dataset.entity; // Assuming entity is stored in data-entity attribute
+//
+//         let isVisible = true;
+//
+//         if (searchBar && !bookName.includes(searchBar)) {
+//             isVisible = false;
+//         }
+//
+//         if (entitySelect !== 'all' && entity !== entitySelect) {
+//             isVisible = false;
+//         }
+//
+//         if (categoryFilter !== 'all' && category !== categoryFilter) {
+//             isVisible = false;
+//         }
+//
+//         row.style.display = isVisible ? '' : 'none';
+//     });
+// }
+//
+// function sortTable(column, order) {
+//     const tableBody = document.getElementById('bookTableBody');
+//     const rows = Array.from(tableBody.rows);
+//
+//     rows.sort((a, b) => {
+//         let valA, valB;
+//         if (column === 'price') {
+//             valA = parseFloat(a.querySelector('.price').textContent.replace('$', ''));
+//             valB = parseFloat(b.querySelector('.price').textContent.replace('$', ''));
+//         } else if (column === 'date') {
+//             valA = new Date(a.querySelector('.publication-date').textContent);
+//             valB = new Date(b.querySelector('.publication-date').textContent);
+//         }
+//
+//         if (order === 'asc') {
+//             return valA - valB;
+//         } else if (order === 'desc') {
+//             return valB - valA;
+//         }
+//         return 0;
+//     });
+//     rows.forEach(row => tableBody.appendChild(row));
+// }
+document.querySelectorAll('.dropdown-content a').forEach(item => {
+    item.addEventListener('click', event => {
+        const dropdown = event.target.closest('.dropdown');
+        const button = dropdown.querySelector('.dropbtn');
+        button.textContent = event.target.textContent;
+        button.dataset.value = event.target.dataset.value;
+    });
+});

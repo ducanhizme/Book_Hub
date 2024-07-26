@@ -29,14 +29,14 @@ namespace BookHub
                     
                     Session[Constants.Success] = "Login success. Welcome to BookHub";
                     var userAuthenticated = _userRepository.FindUserByEmail(email);
-                    Session[Constants.Authenticated] = userAuthenticated.UserId;
+                    Session[Constants.Authenticated] = userAuthenticated;
                     
                     Console.WriteLine("Login Page - Session Authenticated set: " + Session[Constants.Authenticated]);
 
                     if (userAuthenticated.Role == "Admin")
                     {
                        
-                        Response.Redirect("Admin.aspx");
+                        Response.Redirect("AdminHome.aspx");
                     }
                     else
                     {

@@ -1,0 +1,244 @@
+﻿.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.book-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.book-table th, .book-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.book-table th {
+    background-color: #937DC2;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.book-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.book-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.book-table td img.book-image {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.book-table td img.book-image:hover {
+    transform: scale(1.1);
+}
+
+.book-table th, .book-table td {
+    border-right: 1px solid #ddd;
+}
+
+.book-table th:last-child, .book-table td:last-child {
+    border-right: none;
+}
+
+.book-table thead {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-table tbody tr {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-table tbody tr:hover {
+    background-color: #e9e9e9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust specific columns */
+.book-table td.book-id, .book-table td.price, .book-table td.language, .book-table td.publication-date {
+    white-space: nowrap;
+    padding: 8px 12px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.book-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.book-table th, .book-table td {
+
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.book-table th {
+    background-color: #937DC2;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.book-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.book-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.book-table td img.book-image {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.book-table td img.book-image:hover {
+    transform: scale(1.1);
+}
+
+.book-table th, .book-table td {
+    border-right: 1px solid #ddd;
+}
+
+.book-table th:last-child, .book-table td:last-child {
+    border-right: none;
+}
+
+.book-table thead {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-table tbody tr {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-table tbody tr:hover {
+    background-color: #e9e9e9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust specific columns */
+.book-table td.book-id, .book-table td.price, .book-table td.language, .book-table td.publication-date {
+    white-space: nowrap;
+    padding: 8px 12px;
+}
+
+.edit-button, .delete-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #da190b;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-container input, .filter-container select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-family: 'Inter', sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #f9f9f9;
+    color: black;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1;
+}

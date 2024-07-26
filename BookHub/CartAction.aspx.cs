@@ -14,7 +14,7 @@ namespace BookHub
         protected void Page_Load(object sender, EventArgs e)
         {
             _cartRepository = new CartRepository();
-            _userId = Convert.ToInt32(Session[Constants.Authenticated]);
+            _userId = Convert.ToInt32(AuthenticatedUserId);
             _bookId = Request.QueryString["id"];
             if (_bookId ==null)
             {

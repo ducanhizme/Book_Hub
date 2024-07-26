@@ -4,7 +4,7 @@ using BookHub.data.Models;
 
 namespace BookHub.Ultis
 {
-    public class AuthorizationPage : Page
+    public class AdminPage :Page
     {
         public object AuthenticatedUserId;
         protected override void OnInit(EventArgs e)
@@ -14,9 +14,19 @@ namespace BookHub.Ultis
             AuthenticatedUserId = authenticatedUser?.UserId;
             if (AuthenticatedUserId == null)
             {
-                Console.WriteLine("In AuthorizationPage");
                 Session[Constants.Error] = "You need to login to continue";
                 Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                if (authenticatedUser != null)
+                {
+                    if (authenticatedUser.Role != "Admin")
+                    {
+                        Session[Constants.Error] = "You are not authorized to access this page";
+                        Response.Redirect("Home.aspx");
+                    }
+                }
             }
         }
     }

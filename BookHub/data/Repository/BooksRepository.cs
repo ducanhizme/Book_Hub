@@ -49,13 +49,15 @@ namespace BookHub.data.Repository
                     .ToList();
             }
         }
-        public Book GetBookByName(string name)
+        public List<Book> GetBookByName(string name)
         {
             using (var context = new AppContext())
             {
-                return context.Set<Book>().FirstOrDefault(book => book.BookName == name);
+                return context.Books.Where(book => book.BookName.Contains(name)).ToList();
             }
         }
+        
+        
 
         public void AddBookToCart()
         {
