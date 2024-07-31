@@ -57,13 +57,53 @@ namespace BookHub.data.Repository
             }
         }
         
-        
-
-        public void AddBookToCart()
+        public void DeleteBookById(int id)
         {
-            
+            using (var context = new AppContext())
+            {
+                var book = context.Books.FirstOrDefault(b => b.BookId == id);
+                if (book != null)
+                {
+                    var bookCategories = context.BookCategories.Where(bc => bc.BookId == id).ToList();
+                    context.BookCategories.RemoveRange(bookCategories);
+                    context.Books.Remove(book);
+                    context.SaveChanges();
+                }
+            }
         }
-
-
+        public void UpdateBook(Book updatedBook)
+        {
+            using (var context = new AppContext())
+            {
+                var existingBook = context.Books.FirstOrDefault(b => b.BookId == updatedBook.BookId);
+                if (existingBook != null)
+                {
+                    existingBook.BookName = updatedBook.BookName;
+                    existingBook.Author = updatedBook.Author;
+                    existingBook.Price = updatedBook.Price;
+                    existingBook.Language = updatedBook.Language;
+                    existingBook.PublicationDate = updatedBook.PublicationDate;
+                    existingBook.Image = updatedBook.Image;
+                    context.SaveChanges();
+                }
+            }
+        }
+        
+        public List<Publisher> GetAllPublishers()
+        {
+            using (var context = new AppContext())
+            {
+              return context.Publishers.ToList();
+            }
+        }
+        
+        public void CreateBook(Book newBook)
+        {
+            using (var context = new AppContext())
+            {
+                context.Books.Add(newBook);
+                context.SaveChanges();
+            }
+        }
     }
 }

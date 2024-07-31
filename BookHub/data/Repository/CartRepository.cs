@@ -22,9 +22,7 @@ namespace BookHub.data.Repository
                 var cart = GetCartByUserId(userId);
                 if (cart == null)
                 {
-                    cart = new Cart { UserId = userId, CreatedAt = DateTime.Now };
-                    context.Carts.Add(cart);
-                    context.SaveChanges();
+                    cart = CreateCart(userId);
                 }
 
                 var cartItem = context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.BookId == bookId);
@@ -51,6 +49,17 @@ namespace BookHub.data.Repository
                 }
 
                 context.SaveChanges();
+            }
+        }
+
+        public Cart CreateCart(int userId)
+        {
+            using (var context = new AppContext())
+            {
+                Cart cart = new Cart { UserId = userId, CreatedAt = DateTime.Now };
+                context.Carts.Add(cart);
+                context.SaveChanges();
+                return cart;
             }
         }
 

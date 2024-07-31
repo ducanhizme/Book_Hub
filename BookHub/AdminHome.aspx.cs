@@ -19,8 +19,39 @@ namespace BookHub
         {
             _booksRepository = new BooksRepository();
             _categoryRepository = new CategoryRepository();
+            UpdateBook();
             BindSelectedCategory();
             BindDataToTable(Request.QueryString["action"]);
+            BindSelectedPublisher();
+            
+        }
+
+        private void UpdateBook()
+        {
+            if (Request.Form.Get("action") == "Edit")
+            {
+                foreach (var book in _booksRepository.GetAllBooks())
+                {
+                    string bookName = Request.Form.Get($"nameEt_{book.BookId}");
+                    string author = Request.Form.Get($"authorEt_{book.BookId}");
+                    decimal price = Convert.ToDecimal(Request.Form.Get($"priceEt_{book.BookId}"));
+                    string language = Request.Form.Get($"languageEt_{book.BookId}");
+                    DateTime publicationDate = Convert.ToDateTime(Request.Form.Get($"dateEt_{book.BookId}"));
+                    string image = Request.Form.Get($"imgEt_{book.BookId}");
+                    book.BookName = bookName;
+                    book.Author = author;
+                    book.Price = price;
+                    book.Language = language;
+                    book.PublicationDate = publicationDate;
+                    book.Image = image;
+                    _booksRepository.UpdateBook(book);
+                    Session[Constants.Success] = "Update book success";
+                    Response.Redirect("AdminHome.aspx");
+                }
+            }else if(Request.Form.Get("create") == "Create")
+            {
+                CreateProduct();
+            }
         }
 
         private void BindDataToTable(String action)
@@ -39,9 +70,10 @@ namespace BookHub
                         case "category":
                             if (Request.QueryString["categoryId"] != null)
                             {
-                                     books = _booksRepository.GetBooksByCategoryId(
-                                                                        Convert.ToInt32(Request.QueryString["categoryId"]));
+                                books = _booksRepository.GetBooksByCategoryId(
+                                    Convert.ToInt32(Request.QueryString["categoryId"]));
                             }
+
                             break;
                         case "price":
                             books = _booksRepository.GetAllBooks();
@@ -84,21 +116,23 @@ namespace BookHub
                     books = _booksRepository.GetAllBooks();
                     break;
             }
+
             string html = "";
             foreach (var book in books)
             {
                 html += $@" <tr>
-                        <td class=""book-id"">{book.BookId}</td>
-                        <td>{book.BookName}</td>
-                        <td>{book.Author}</td>
-                        <td class=""price"">{book.Price}</td>
-                        <td class=""language"">{book.Language}</td>
-                        <td class=""publication-date"">{book.DateToString()}</td>
-                        <td><img src=""{book.Image}"" alt=""Book Image"" class=""book-image""></td>
-                        <td><a href=""EditBook.aspx?id={book.BookId}"" class=""edit-button"">Edit</button></td>
-                        <td><a href=""RemoveBook.aspx?id={book.BookId}"" class=""delete-button"">Delete</button></td>
-                    </tr>";
+                    <td class=""book-id""><input type=""text"" value=""{book.BookId}""  class=""book-input"" name=""idEt_{book.BookId}"" readonly></td>
+                    <td><input type=""text"" value=""{book.BookName}""  class=""book-input"" name=""nameEt_{book.BookId}""></td>
+                    <td><input type=""text"" value=""{book.Author}""  class=""book-input"" name=""authorEt_{book.BookId}""></td>
+                    <td class=""price""><input type=""text"" value=""{book.Price}""  class=""book-input"" name=""priceEt_{book.BookId}""></td>
+                    <td class=""language""><input type=""text"" value=""{book.Language}""  class=""book-input"" name=""languageEt_{book.BookId}""></td>
+                    <td class=""publication-date""><input type=""datetime"" value=""{book.DateToString()}""  class=""book-input"" name=""dateEt_{book.BookId}""></td>
+                    <td><img src=""{book.Image}"" alt=""Book Image"" class=""book-image""><input type=""text"" value=""{book.Image}""  class=""book-input"" name=""imgEt_{book.BookId}""></td>
+                    <td><button type=""submit"" name=""action"" value=""Edit""  class=""edit-button"">Edit</a></td>
+                    <td><a href=""RemoveBook.aspx?id={book.BookId}"" class=""delete-button"">Delete</a></td>
+                </tr>";
             }
+
             bookTableBody.InnerHtml = html;
         }
 
@@ -113,6 +147,48 @@ namespace BookHub
             }
 
             categoryFilter.InnerHtml = html;
+        }
+
+        private void BindSelectedPublisher()
+        {
+            var publishers = _booksRepository.GetAllPublishers();
+            foreach (var publisher in publishers)
+            {
+                publisherId.Items.Add(new ListItem(publisher.PublisherName, publisher.PublisherId.ToString()));
+            }
+            publisherId.Attributes["name"] = "publisherId";
+        }
+
+        private void CreateProduct()
+        {
+            string bookName = Request.Form.Get("bookName");
+            string author = Request.Form.Get("author");
+            int publisher = Convert.ToInt32(publisherId.Value);
+            decimal price = Convert.ToDecimal(Request.Form.Get("price"));
+            string description = Request.Form.Get("description");
+            string language = Request.Form.Get("language");
+            DateTime publicationDate = Convert.ToDateTime(Request.Form.Get("publicationDate"));
+            int readingAge = Convert.ToInt32(Request.Form.Get("readingAge"));
+            int printLength = Convert.ToInt32(Request.Form.Get("printLength"));
+            string dimension = Request.Form.Get("dimensions");
+            string image = Request.Form.Get("image");
+            Book book = new Book
+            {
+                BookName = bookName,
+                Author = author,
+                PublisherId = publisher,
+                Price = price,
+                Description = description,
+                Language = language,
+                PublicationDate = publicationDate,
+                ReadingAge = readingAge,
+                PrintLength = printLength,
+                Dimensions = dimension,
+                Image = image
+            };
+            _booksRepository.CreateBook(book);
+            Session[Constants.Success] = "Create book success";
+            Response.Redirect("AdminHome.aspx");
         }
     }
 }

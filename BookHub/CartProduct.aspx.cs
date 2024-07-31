@@ -25,7 +25,11 @@ namespace BookHub
 
         private void BindCart()
         {
-            var cart = _cartRepository.GetCartByUserId(Convert.ToInt32(_userId));   
+            var cart = _cartRepository.GetCartByUserId(Convert.ToInt32(_userId));
+            if(cart == null)
+            {
+                cart = _cartRepository.CreateCart(Convert.ToInt32(_userId));
+            }
             var cartItems = _cartRepository.GetCartItemsByUserId(Convert.ToInt32(_userId));
             decimal sum = 0;
 
