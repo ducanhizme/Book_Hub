@@ -13,5 +13,19 @@ namespace BookHub
 
     public partial class Login
     {
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new BookHub.Layout._General Master
+        {
+            get
+            {
+                return ((BookHub.Layout._General)(base.Master));
+            }
+        }
     }
 }

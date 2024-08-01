@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using BookHub.data.Models;
 using BookHub.data.Repository;
 using BookHub.Ultis;
-using Org.BouncyCastle.Ocsp;
 
 namespace BookHub
 {
@@ -48,21 +45,18 @@ namespace BookHub
                     Session[Constants.Success] = "Update book success";
                     Response.Redirect("AdminHome.aspx");
                 }
-            }else if(Request.Form.Get("create") == "Create")
+            }
+            else if (Request.Form.Get("action") == "Create")
             {
                 CreateProduct();
             }
         }
 
-        private void BindDataToTable(String action)
+        private void BindDataToTable(string action)
         {
             List<Book> books = new List<Book>();
             switch (action)
             {
-                case "search":
-                    string searchKey = Request.Form.Get("search-key");
-                    books = _booksRepository.GetBookByName(searchKey);
-                    break;
                 case "filter":
                     string orderBy = Request.QueryString["orderBy"];
                     switch (orderBy)
@@ -73,7 +67,6 @@ namespace BookHub
                                 books = _booksRepository.GetBooksByCategoryId(
                                     Convert.ToInt32(Request.QueryString["categoryId"]));
                             }
-
                             break;
                         case "price":
                             books = _booksRepository.GetAllBooks();
@@ -89,7 +82,6 @@ namespace BookHub
                                         break;
                                 }
                             }
-
                             break;
                         case "date":
                             books = _booksRepository.GetAllBooks();
@@ -107,13 +99,19 @@ namespace BookHub
                                         break;
                                 }
                             }
-
                             break;
                     }
-
                     break;
                 default:
-                    books = _booksRepository.GetAllBooks();
+                    if (Request.Form.Get("search-key") != null)
+                    {
+                        string searchKey = Request.Form.Get("search-key");
+                        books = _booksRepository.GetBookByName(searchKey);
+                    }
+                    else
+                    {
+                        books = _booksRepository.GetAllBooks();
+                    }
                     break;
             }
 
@@ -128,7 +126,7 @@ namespace BookHub
                     <td class=""language""><input type=""text"" value=""{book.Language}""  class=""book-input"" name=""languageEt_{book.BookId}""></td>
                     <td class=""publication-date""><input type=""datetime"" value=""{book.DateToString()}""  class=""book-input"" name=""dateEt_{book.BookId}""></td>
                     <td><img src=""{book.Image}"" alt=""Book Image"" class=""book-image""><input type=""text"" value=""{book.Image}""  class=""book-input"" name=""imgEt_{book.BookId}""></td>
-                    <td><button type=""submit"" name=""action"" value=""Edit""  class=""edit-button"">Edit</a></td>
+                    <td><button type=""submit"" name=""action"" value=""Edit""  class=""edit-button"">Edit</button></td>
                     <td><a href=""RemoveBook.aspx?id={book.BookId}"" class=""delete-button"">Delete</a></td>
                 </tr>";
             }
@@ -156,6 +154,7 @@ namespace BookHub
             {
                 publisherId.Items.Add(new ListItem(publisher.PublisherName, publisher.PublisherId.ToString()));
             }
+
             publisherId.Attributes["name"] = "publisherId";
         }
 
@@ -172,23 +171,32 @@ namespace BookHub
             int printLength = Convert.ToInt32(Request.Form.Get("printLength"));
             string dimension = Request.Form.Get("dimensions");
             string image = Request.Form.Get("image");
-            Book book = new Book
+            if (bookName == "" || author == "" || price == 0 || description == "" || language == "" || readingAge == 0 || printLength == 0 || dimension == "" || image == "")
             {
-                BookName = bookName,
-                Author = author,
-                PublisherId = publisher,
-                Price = price,
-                Description = description,
-                Language = language,
-                PublicationDate = publicationDate,
-                ReadingAge = readingAge,
-                PrintLength = printLength,
-                Dimensions = dimension,
-                Image = image
-            };
-            _booksRepository.CreateBook(book);
-            Session[Constants.Success] = "Create book success";
-            Response.Redirect("AdminHome.aspx");
+                Session[Constants.Error] = "Please fill all the fields";
+                Response.Redirect("AdminHome.aspx#popup1");
+            }
+            else
+            {
+                Book book = new Book
+                {
+                    BookName = bookName,
+                    Author = author,
+                    PublisherId = publisher,
+                    Price = price,
+                    Description = description,
+                    Language = language,
+                    PublicationDate = publicationDate,
+                    ReadingAge = readingAge,
+                    PrintLength = printLength,
+                    Dimensions = dimension,
+                    Image = image
+                };
+                _booksRepository.CreateBook(book);
+                Session[Constants.Success] = "Create book success";
+                Response.Redirect("AdminHome.aspx");
+            }
+            
         }
     }
 }

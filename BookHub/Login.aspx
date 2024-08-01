@@ -10,7 +10,7 @@
                     <label>Enter your email</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" required name="password">
+                    <input type="password" required name="password" id="password">
                     <label>Enter your password</label>
                 </div>
                 <div class="option-input">
@@ -20,7 +20,7 @@
                     </label>
                     <a href="#">Forgot password?</a>
                 </div>
-                <button type="submit">Log In</button>
+                <button type="submit" id="loginBtn">Log In</button>
                 <div class="switch">
                     <p>Don't have an account? <a href="Register.aspx">Register</a></p>
                 </div>

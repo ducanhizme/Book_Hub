@@ -362,18 +362,18 @@ button {
 
 /* The SIMPLE-TOAST - position it at the bottom and in the middle of the screen */
 #simpleToast {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: MediumVioletRed; /* Background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
+    visibility: hidden;
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: MediumVioletRed;
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px;
+    padding: 16px; 
+    position: fixed; 
+    z-index: 1; 
+    left: 50%;
+    bottom: 30px; 
     font-family: monospace;
     display: inline-flex;
     line-height: 12px
@@ -383,12 +383,9 @@ button {
         margin-left: 12px;
         margin-top: 2px;
     }
-
-    /* Show the SIMPLE-TOAST when clicking on a button (class added with JavaScript) */
+    
     #simpleToast.show {
-        visibility: visible; /* Show the SIMPLE-TOAST */
-        /* Add animation: Take 0.5 seconds to fade in and out the SIMPLE-TOAST.
-  However, delay the fade out process for 2.5 seconds */
+        visibility: visible; 
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
         animation: fadein 0.5s, fadeout 0.5s 2.5s;
     }
